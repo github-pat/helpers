@@ -1,0 +1,19 @@
+  <!-- Modal HTML embedded directly into document -->
+<div class="jquery-modal blocker current">
+	<div id="alert" class="jmodal">
+		<div class="jmodal-body">
+			<div class="icono jmodal-icono"></div>
+				<p class="mensaje"></p>
+				<a class="btn btn-primary text-white" rel="modal:close">Aceptar</a>
+		</div>
+	</div>
+</div>
+
+<script>
+	$("#alert").modal({
+      escapeClose: false,
+      clickClose: true,
+      showClose: false
+    });
+    $('#modals').css('visibility', 'hidden');
+</script>

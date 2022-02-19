@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exportar a excel</title>
+  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script>
+      $(document).on('click', '#submitExport', function(e) {
+          e.preventDefault();
+          $('table').css({
+              "color": "#FFFFFF",
+              "font-weight": "bold",
+              "background-color": "#009900",
+              "font-family": "Verdana, Geneva, sans-serif"
+          });
+          $('td').each(function() {
+              if ($(this).attr('style') == "display: none;") {
+                  this.remove()
+              }
+          });
+          $('td').css({
+              "text-align" : "center",
+              "font-size" : "9px",
+              "vertical-align" : "middle"
+          });
+          let export_to_excel = document.getElementById('export_to_excel');
+          let data_to_send = document.getElementById('data_to_send');
+          data_to_send.value = export_to_excel.outerHTML;
+          document.getElementById('formExport').submit();
+          alert('Se procederá a la descarga.')
+          window.location.reload()
+      });
+  </script>
+</head>
+<body>
+    <table width="4136" border="1" cellpadding="0" cellspacing="0" bordercolor="#333333" nowrap align="left" id="export_to_excel" >
+    <tr>
+        <td width="45" rowspan="3" nowrap class="Estilo7">Nº</td>
+        <td width="200" rowspan="3" nowrap  class="Estilo7 c1" >PROCESO TRANSVERSAL</td>
+        <td width="200" rowspan="3" class="Estilo7 c2" >PROCESO</td>
+        <td width="100" rowspan="3" class="Estilo7 c3" >PONDERACION ESTRAT&Eacute;GICA PROCESO</td>
+        <td width="200" rowspan="3" class="Estilo7 c4" >SUBPROCESO</td>
+        <td width="100" rowspan="3" class="Estilo7 c5" >PONDERACION ESTRAT&Eacute;GICA SUBPROCESO</td>
+        <td width="200" rowspan="3" class="Estilo7 c6" >ETAPA RELEVANTE</td>
+        <td width="200" rowspan="3" class="Estilo7 c7" >OBJETIVO ESPECIFICO</td>
+        <td colspan="9" class="Estilo7" id="riesgos" >RIESGOS IDENTIFICADOS</td>
+        <td colspan="6" class="Estilo7" id="cce" >CONTROLES CLAVES EXISTENTES</td>
+        <td colspan="2" class="Estilo7 c19" id="p_riesgo">POR RIESGO</td>
+        <td colspan="2" class="Estilo7 c20" id="p_etapa">POR ETAPA</td>
+        <td colspan="4" class="Estilo7 c21" id="p_subproceso">POR SUBPROCESO</td>
+        <td colspan="4" class="Estilo7 c22" id="p_proceso">POR PROCESO</td>
+      </tr>
+      <tr>
+        <td width="200" rowspan="2" class="Estilo7 c8" >DESCRIPCION DEL RIESGO</td>
+        <td width="150" rowspan="2" class="Estilo7 c9" >FUENTE DEL RIESGO</td>
+        <td width="150" rowspan="2" class="Estilo7 c10" >TIPO DE RIESGO </td>
+        <td colspan="2" class="Estilo7 c11" id="probabilidad">Probabilidad</td>
+        <td colspan="2" class="Estilo7 c12" id="impacto">Impacto</td>
+        <td width="205" rowspan="2" class="Estilo7 c13" >SEVERIDAD DEL RIESGO</td>
+        <td width="45" rowspan="2" class="Estilo7 c14" >VALOR</td>
+        <td width="200" rowspan="2" class="Estilo7 c15" >DESCRIPCION DEL CONTROL</td>
+        <td width="180" rowspan="2" class="Estilo7 c16" >CUMPLIMIENTO NORMAS DE CONTROL</td>
+        <td colspan="3" nowrap class="Estilo7 c17" id="n_efectividad">NIVEL EFECTVIDAD</td>
+
+        <td width="44" rowspan="2" nowrap class="Estilo7 c18" >VALOR</td>
+        <td width="120" rowspan="2" class="Estilo7 c19" >NIVEL EXPOSICION AL RIESGO</td>
+        <td width="45" rowspan="2" nowrap class="Estilo7 c19" >VALOR</td>
+        <td width="120" rowspan="2" class="Estilo7 c20" >NIVEL EXPOSICION AL RIESGO</td>
+        <td width="45"rowspan="2" nowrap class="Estilo7 c20" >VALOR</td>
+        <td width="155" rowspan="2" class="Estilo7 c21">NIVEL EXPOSICION AL RIESGO</td>
+        <td width="45" rowspan="2" nowrap class="Estilo7 c21" >VALOR</td>
+        <td width="100"rowspan="2" class="Estilo7 c21">EXPOSICION AL RIESGO PONDERADA</td>
+        <td width="100" rowspan="2" class="Estilo7 c21" >RANKING PRIORIZACION</td>
+        <td width="155" rowspan="2" class="Estilo7 c22">NIVEL EXPOSICION AL RIESGO</td>
+        <td width="45" rowspan="2" nowrap class="Estilo7 c22">VALOR</td>
+        <td width="100" rowspan="2" class="Estilo7 c22" >EXPOSICION AL RIESGO PONDERADA</td>
+        <td width="100" rowspan="2" class="Estilo7 c22" >RANKING PRIORIZACION</td>
+      </tr>
+      <tr>
+        <td width="80" class="Estilo7 c11">CLASIF.</td>
+        <td width="45" class="Estilo7 c11">VALOR</td>
+        <td width="80" class="Estilo7 c12">CLASIF.</td>
+        <td width="45" class="Estilo7 c12" >VALOR</td>
+        <td width="112" nowrap class="Estilo7 c17" >PERIODICIDAD</td>
+        <td width="112" nowrap class="Estilo7 c17" >OPORTUNIDAD</td>
+        <td width="112" nowrap class="Estilo7 c17" >AUTOMATIZACION</td>
+      </tr>  
+    </table>
+    <form action="process.php" method="POST" id="formExport">
+        <input type="hidden" id="data_to_send" name="data_to_send" />
+    </form>
+</body>
+</html>

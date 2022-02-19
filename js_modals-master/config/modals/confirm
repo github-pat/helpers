@@ -1,0 +1,23 @@
+  <!-- Modal HTML embedded directly into document -->
+<div class="jquery-modal blocker current">
+	<div id="alert" class="jmodal">
+		<div class="jmodal-body">
+			<div class="icono jmodal-icono">
+      </div>
+			<p class="mensaje"></p>
+			<a class="btn btn-primary text-white float-right mt-3 mx-1" id="no" rel="modal:close" 
+			style="width: 50px;">No</a>
+			<a class="btn btn-primary text-white float-right mt-3 mx-1" id="si" rel="modal:close"
+			style="width: 50px;">Si</a>
+		</div>
+	</div>
+</div>
+
+<script>
+	$("#alert").modal({
+      escapeClose: false,
+      clickClose: false,
+      showClose: false
+    });
+    $('#modals').css('visibility', 'hidden');
+</script>
