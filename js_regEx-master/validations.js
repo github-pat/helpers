@@ -41,22 +41,21 @@ function Select(int){
 */
 
 function CheckRut(rut) {
-      rut = String(rut);
-      var valor = rut.replace(".", "").replace(".", "");
-      valor = valor.replace("-", "");
-      cuerpo = valor.slice(0, -1);
-      dv = valor.slice(-1).toUpperCase();
-      rut = Number(cuerpo) + "-" + dv;
-      if (cuerpo.length < 7) { return false; }
-      suma = 0;
-      multiplo = 2;
-      for (i = 1; i <= cuerpo.length; i++) {
-        index = multiplo * valor.charAt(cuerpo.length - i);
+    rut = String(rut);
+    let valor = rut.replace(".", "").replace(".", "").replace("-", ""),
+        cuerpo = valor.slice(0, -1),
+        dv = valor.slice(-1).toUpperCase(),
+        suma = 0,
+        multiplo = 2;
+    rut = Number(cuerpo) + "-" + dv;
+    if (cuerpo.length < 7) { return false; }
+    for (i = 1; i <= cuerpo.length; i++) {
+        let index = multiplo * valor.charAt(cuerpo.length - i);
         suma = suma + index;
         multiplo = (multiplo < 7) ? multiplo + 1 : 2;
-      }
-      dvEsperado = 11 - suma % 11;
-      dv = dv == "K" ? 10 : dv;
-      dv = dv == 0 ? 11 : dv;
-      return (dvEsperado != dv) ? false : rut;
+    }
+    let dvEsperado = 11 - suma % 11;
+    dv = dv == "K" ? 10 : dv;
+    dv = dv == 0 ? 11 : dv;
+    return (dvEsperado != dv) ? false : rut;
 }
